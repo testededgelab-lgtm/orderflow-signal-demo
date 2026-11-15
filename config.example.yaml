@@ -1,0 +1,17 @@
+# Copy to config.yaml and adjust. No code changes needed.
+
+exchanges:
+  bybit: [BTCUSDT, ETHUSDT, SOLUSDT]
+  # binance: [BTCUSDT, ETHUSDT]     # USD-M futures; may be geo-blocked in some countries
+
+windows:
+  short_seconds: 30        # the impulse window
+  baseline_seconds: 900    # "normal" activity is measured over this window
+
+filters:
+  min_imbalance: 0.35      # aggressive (buy - sell) / total volume in the short window
+  min_activity: 3.0        # short-window volume rate vs baseline rate
+  min_price_change: 0.0015 # 0.15% move in the signal's direction within the short window
+  min_trades: 50           # ignore thin windows
+  min_volume: 250000       # short-window volume in USDT
+  cooldown_seconds: 120    # one impulse -> one signal per symbol
